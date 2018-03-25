@@ -33,7 +33,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Задачи" id="Rha-5q-huC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qcl-Z8-MLw">
+                        <barButtonItem key="rightBarButtonItem" image="addTodoIcon" id="qcl-Z8-MLw">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="Nwl-M3-v1B" kind="presentation" id="Xcb-KG-Afx"/>
@@ -58,7 +58,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoTitle" id="XMO-at-5ps">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoTitle" id="XMO-at-5ps">
                                 <rect key="frame" x="0.0" y="42" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XMO-at-5ps" id="E45-cV-5Xo">
@@ -67,9 +67,10 @@
                                     <subviews>
                                         <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Название задачи..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXc-gL-N3o">
                                             <rect key="frame" x="15" y="10" width="345" height="31.5"/>
+                                            <edgeInsets key="layoutMargins" top="15" left="25" bottom="15" right="25"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -80,13 +81,14 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" id="duo-NV-LcL">
+                            <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" id="duo-NV-LcL">
                                 <rect key="frame" x="0.0" y="94" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="duo-NV-LcL" id="XWb-xU-vCK">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -154,6 +156,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addTodoIcon" width="24" height="24"/>
         <image name="backIcon" width="24" height="24"/>
         <image name="done" width="24" height="24"/>
     </resources>

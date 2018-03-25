@@ -21,9 +21,7 @@ class TodosController: CustomTableview {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "CustomCheckboxCell", bundle: nil), forCellReuseIdentifier: "customCheckboxCell")
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // FIXME: CONFIG SECTIONS
         return todo.count

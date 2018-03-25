@@ -25,5 +25,9 @@ class CustomTableview: UITableViewController {
         }
         return UITableViewCell()
     }
+    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Light", size: 20), NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
 }
 
