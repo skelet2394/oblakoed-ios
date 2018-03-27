@@ -5,7 +5,7 @@ target 'oblakoed' do
   use_frameworks!
   # Pods for oblakoed
   pod 'Alamofire'
-  pod 'SwiftyJSON’
+  pod 'CodableAlamofire'
   pod 'M13Checkbox'
 
 end

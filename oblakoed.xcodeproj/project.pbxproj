@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		482F7DA06797D047AB9FEE04 /* Pods_oblakoed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4612300E6F65FBD76EA5BF5 /* Pods_oblakoed.framework */; };
+		921A01CB2067AAB4005891BD /* GetTodos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A01CA2067AAB4005891BD /* GetTodos.swift */; };
+		921A01D22069062D005891BD /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A01D12069062D005891BD /* DataModel.swift */; };
 		9238669D206577F60091C3D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238669C206577F60091C3D0 /* AppDelegate.swift */; };
 		923866A2206577F60091C3D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923866A0206577F60091C3D0 /* Main.storyboard */; };
 		923866A4206577F60091C3D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923866A3206577F60091C3D0 /* Assets.xcassets */; };
 		923866AF20657ACB0091C3D0 /* TodosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923866AE20657ACB0091C3D0 /* TodosController.swift */; };
-		923866B120657D7A0091C3D0 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923866B020657D7A0091C3D0 /* Todo.swift */; };
-		923866B320657D870091C3D0 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923866B220657D870091C3D0 /* Project.swift */; };
 		923866B520658D080091C3D0 /* AddTodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923866B420658D080091C3D0 /* AddTodoController.swift */; };
 		923866BA2065934B0091C3D0 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 923866B7206593120091C3D0 /* OpenSans-Light.ttf */; };
 		923866BB2065934B0091C3D0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 923866B9206593120091C3D0 /* OpenSans-Regular.ttf */; };
@@ -26,14 +26,14 @@
 
 /* Begin PBXFileReference section */
 		8A45E33788A4D7AA2AAAE7C5 /* Pods-oblakoed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oblakoed.release.xcconfig"; path = "Pods/Target Support Files/Pods-oblakoed/Pods-oblakoed.release.xcconfig"; sourceTree = "<group>"; };
+		921A01CA2067AAB4005891BD /* GetTodos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodos.swift; sourceTree = "<group>"; };
+		921A01D12069062D005891BD /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		92386699206577F60091C3D0 /* oblakoed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oblakoed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9238669C206577F60091C3D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		923866A1206577F60091C3D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		923866A3206577F60091C3D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		923866A8206577F60091C3D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		923866AE20657ACB0091C3D0 /* TodosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosController.swift; sourceTree = "<group>"; };
-		923866B020657D7A0091C3D0 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		923866B220657D870091C3D0 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		923866B420658D080091C3D0 /* AddTodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoController.swift; sourceTree = "<group>"; };
 		923866B7206593120091C3D0 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		923866B8206593120091C3D0 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
@@ -58,6 +58,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		921A01CC2067DFEE005891BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				924F767320666D4700AF5CCA /* CustomTableview.swift */,
+				923866AE20657ACB0091C3D0 /* TodosController.swift */,
+				923866B420658D080091C3D0 /* AddTodoController.swift */,
+				921A01CA2067AAB4005891BD /* GetTodos.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		921A01CD2067E00F005891BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				921A01D12069062D005891BD /* DataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		921A01CE2067E037005891BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				923866A0206577F60091C3D0 /* Main.storyboard */,
+				924F767920678E3000AF5CCA /* Custom Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		92386690206577F60091C3D0 = {
 			isa = PBXGroup;
 			children = (
@@ -80,15 +108,11 @@
 			isa = PBXGroup;
 			children = (
 				9238669C206577F60091C3D0 /* AppDelegate.swift */,
-				924F767320666D4700AF5CCA /* CustomTableview.swift */,
-				923866AE20657ACB0091C3D0 /* TodosController.swift */,
-				923866B420658D080091C3D0 /* AddTodoController.swift */,
-				923866B220657D870091C3D0 /* Project.swift */,
-				923866B020657D7A0091C3D0 /* Todo.swift */,
-				923866A0206577F60091C3D0 /* Main.storyboard */,
+				921A01CD2067E00F005891BD /* Model */,
+				921A01CC2067DFEE005891BD /* Controller */,
+				921A01CE2067E037005891BD /* View */,
 				923866A3206577F60091C3D0 /* Assets.xcassets */,
 				923866A8206577F60091C3D0 /* Info.plist */,
-				924F767920678E3000AF5CCA /* Custom Cell */,
 				923866B6206592DB0091C3D0 /* fonts */,
 			);
 			path = oblakoed;
@@ -214,14 +238,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-oblakoed/Pods-oblakoed-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -270,11 +294,11 @@
 			files = (
 				924F767420666D4700AF5CCA /* CustomTableview.swift in Sources */,
 				924F767820667F1700AF5CCA /* CustomCheckboxCell.swift in Sources */,
+				921A01CB2067AAB4005891BD /* GetTodos.swift in Sources */,
 				9238669D206577F60091C3D0 /* AppDelegate.swift in Sources */,
 				923866AF20657ACB0091C3D0 /* TodosController.swift in Sources */,
-				923866B320657D870091C3D0 /* Project.swift in Sources */,
-				923866B120657D7A0091C3D0 /* Todo.swift in Sources */,
 				923866B520658D080091C3D0 /* AddTodoController.swift in Sources */,
+				921A01D22069062D005891BD /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,19 @@
 PODS:
   - Alamofire (4.6.0)
+  - CodableAlamofire (1.1.0):
+    - Alamofire (~> 4.0)
   - M13Checkbox (3.2.2)
-  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - CodableAlamofire
   - M13Checkbox
-  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
   M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 4d06bb7d0c1623735de756ae3d4b41b12a4fc0c2
+PODFILE CHECKSUM: 660fd78001fd3e578e25bc82214643a9a5e81895
 
 COCOAPODS: 1.4.0
