@@ -18,5 +18,6 @@ class CustomTableview: UITableViewController {
         header.textLabel?.font = UIFont(name: "OpenSans-Bold", size: 12)!
         header.textLabel?.text = header.textLabel?.text?.uppercased()
     }
+  
 }
 
