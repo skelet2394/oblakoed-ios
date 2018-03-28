@@ -18,7 +18,7 @@ class AddTodoController: CustomTableview {
     var projects = [DataModel.Project]()
     
     var selectedRow: Int = 0
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,11 @@ class AddTodoController: CustomTableview {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Light", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white]
 
         updateProjects()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let index = IndexPath(row: 0, section: 1)
+        tableView.selectRow(at: index, animated: true, scrollPosition: .top)
+        addTodoTableView.delegate?.tableView!(addTodoTableView, didSelectRowAt: index)
     }
     func updateProjects () {
         todosNetworking.getTodosData { (project, todo) in
@@ -62,7 +67,9 @@ class AddTodoController: CustomTableview {
             
             let categoryCell = tableView.dequeueReusableCell(withIdentifier: todoCategoryCell)!
             categoryCell.textLabel?.text = projects[indexPath.row].title
-            
+            if indexPath.row == 0 {
+                categoryCell.setSelected(true, animated: true)
+            }
             return categoryCell
         }
     }
@@ -116,7 +123,6 @@ class AddTodoController: CustomTableview {
     
     
     @IBAction func addTodoPressed(_ sender: UIBarButtonItem) {
-        
         let totalSection = addTodoTableView.numberOfSections
         for section in 0..<totalSection
         {
@@ -127,11 +133,18 @@ class AddTodoController: CustomTableview {
                 let cell = addTodoTableView.cellForRow(at: IndexPath(row: row, section: section))
                 if let textField = cell?.viewWithTag(101) as? UITextField
                 {
+                    if textField.text == "" {
+                        let alert = UIAlertController(title: "Введите задачу", message: "Текст задачи не может быть пустым", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        present(alert, animated: true, completion: nil)
+                    } else {
                     todosNetworking.addNewTodo(projectId: projects[selectedRow].id, text: textField.text!)
                     
                     navigationController?.popViewController(animated: true)
                     
                     dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }
