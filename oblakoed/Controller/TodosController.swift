@@ -12,20 +12,18 @@ class TodosController: CustomTableview {
     
     @IBOutlet weak var todoTableView: UITableViewCell!
     
-    let getTodo = GetTodos()
+    let todosNetworking  = TodosNetworking()
     var projects = [DataModel.Project]()
     var todos = [DataModel.Todo]()
     let decoder = JSONDecoder()
     
-    let proj1 = ["Заплатить за квартиру", "Купить продукты" ,"Забрать обувь из ремонта"]
-    let proj2 = ["Заполнить отчёт", "Отправить документы" ,"Позвонить заказчику"]
-    
-    let todo = ["Семья", "Работа", "Прочее"]
     @IBOutlet weak var addTodoButton: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "CustomCheckboxCell", bundle: nil), forCellReuseIdentifier: "customCheckboxCell")
+    }
+    override func viewDidAppear(_ animated: Bool) {
         prepareTableviewData()
     }
     
@@ -57,54 +55,70 @@ class TodosController: CustomTableview {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCheckboxCell") as! CustomCheckboxCell
         let sectionId = projects[indexPath.section].id
-        let todoTitle = todoForIndexInSection(index: indexPath.row, section: sectionId)
-        cell.todoTitle?.text = todoTitle
+        let todo = todoForIndexInSection(index: indexPath.row, section: sectionId)
+        let todoText = todo.text
+        let todoCompleted = todo.isCompleted
+        cell.todoTitle?.text = todoText
+        cell.todoCheckbox.setCheckState(checkBoxStateFromBoolean(state: todoCompleted), animated: false)
+        if todoCompleted == true {
+            cell.todoTitle?.attributedText = String.makeSlashText((cell.todoTitle?.text)!)
+        }
         
         return cell
     }
     
-    func todoForIndexInSection (index: Int, section: Int) -> String{
+    func todoForIndexInSection (index: Int, section: Int) -> DataModel.Todo{
         var todoForSection: [DataModel.Todo] = []
         todos.forEach { (todo) in
             if todo.projectId == section {
                 todoForSection.append(todo)
             }
         }
-        return todoForSection[index].text
+        return todoForSection[index]
     }
     
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         
         let cell: CustomCheckboxCell = tableView.cellForRow(at: indexPath) as! CustomCheckboxCell
+        let sectionId = projects[indexPath.section].id
+        let todo = todoForIndexInSection(index: indexPath.row, section: sectionId)
+
         
         if cell.todoCheckbox.checkState == .unchecked {
             cell.todoTitle?.attributedText = String.makeSlashText((cell.todoTitle?.text)!)
             cell.todoCheckbox.setCheckState(.checked, animated: true)
+            todosNetworking.updateTodoState(todoId: todo.todoId)
         } else {
             cell.todoCheckbox.setCheckState(.unchecked, animated: true)
             cell.todoTitle?.attributedText = String.makePlainText((cell.todoTitle?.attributedText)!)
+            todosNetworking.updateTodoState(todoId: todo.todoId)
+
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func prepareTableviewData() {
-        getTodo.getTodosData { (project, todo) in
+        todosNetworking.getTodosData { (project, todo) in
             self.projects.removeAll()
             self.todos.removeAll()
             self.projects += project
             self.todos += todo
             self.tableView.reloadData()
+            
         }
     }
     
+    func checkBoxStateFromBoolean(state: Bool) -> M13Checkbox.CheckState {
+       return (state == true) ? .checked : .unchecked
+    }
 }
 extension String {
     static func makeSlashText(_ text:String) -> NSAttributedString {
         
         
         let attr: NSMutableAttributedString =  NSMutableAttributedString(string: text)
-        attr.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attr.length))
+        attr.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue , range: NSMakeRange(0, attr.length))
         
         return attr
         
