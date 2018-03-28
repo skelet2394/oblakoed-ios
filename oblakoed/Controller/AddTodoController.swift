@@ -22,13 +22,20 @@ class AddTodoController: CustomTableview {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Light", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white]
+
+        updateProjects()
+    }
+    func updateProjects () {
         todosNetworking.getTodosData { (project, todo) in
             self.projects.removeAll()
             self.projects += project
             self.tableView.reloadData()
         }
     }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

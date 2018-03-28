@@ -18,10 +18,5 @@ class CustomTableview: UITableViewController {
         header.textLabel?.font = UIFont(name: "OpenSans-Bold", size: 12)!
         header.textLabel?.text = header.textLabel?.text?.uppercased()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Light", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white]
-    }
 }
 

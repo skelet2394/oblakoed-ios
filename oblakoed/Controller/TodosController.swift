@@ -23,7 +23,9 @@ class TodosController: CustomTableview {
         
         self.tableView.register(UINib(nibName: "CustomCheckboxCell", bundle: nil), forCellReuseIdentifier: "customCheckboxCell")
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear (_ animated: Bool) {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Light", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white]
+
         prepareTableviewData()
     }
     
